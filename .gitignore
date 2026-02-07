@@ -1,0 +1,40 @@
+# Node modules
+node_modules/
+functions/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Upsun/Platform.sh
+.platform/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+
+# Testing
+coverage/
+.nyc_output/

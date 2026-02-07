@@ -1,0 +1,4 @@
+# .github
+*.swp
+*.swo
+.DS_Store

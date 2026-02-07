@@ -1,0 +1,59 @@
+# Upsun/Platform.sh configuration for Node.js application
+name: postfix-mailer
+
+# Use Node.js 18
+type: nodejs:18
+
+# Build configuration
+build:
+    flavor: none
+
+# Dependencies
+dependencies:
+    nodejs:
+        yarn: "1.22.19"
+
+# Hooks for building and deploying
+hooks:
+    build: |
+        set -e
+        npm install
+        cd functions && npm install && cd ..
+    
+    deploy: |
+        set -e
+        echo "Deployment complete"
+
+# Web configuration
+web:
+    commands:
+        start: "cd functions && npm start"
+    
+    locations:
+        "/":
+            root: "public"
+            index: ["index.html"]
+            allow: true
+            passthru: true
+        
+        "/api":
+            root: "public"
+            passthru: true
+            scripts: true
+            allow: false
+
+# Mounts for writable directories
+mounts:
+    "/.npm":
+        source: local
+        source_path: npm
+    "/functions/node_modules":
+        source: local
+        source_path: functions_node_modules
+
+# Disk space
+disk: 512
+
+# Relationships (if you need databases, etc.)
+# relationships:
+#     database: "db:mysql"

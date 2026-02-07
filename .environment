@@ -1,0 +1,25 @@
+# Environment Configuration for Upsun & Firebase
+
+# SMTP Configuration (Required for email sending)
+export SMTP_HOST=localhost
+export SMTP_PORT=25
+export SMTP_SECURE=false
+export SMTP_FROM=noreply@yourdomain.com
+
+# Optional SMTP Authentication
+# export SMTP_USER=your-smtp-username
+# export SMTP_PASS=your-smtp-password
+
+# Application Settings
+export PORT=8080
+export NODE_ENV=production
+
+# Firebase Project (already configured)
+export FIREBASE_PROJECT_ID=cloud-cd92d
+
+# Upsun will automatically provide these variables:
+# PLATFORM_PROJECT
+# PLATFORM_APPLICATION_NAME
+# PLATFORM_BRANCH
+# PLATFORM_ENVIRONMENT
+# PLATFORM_REGION
