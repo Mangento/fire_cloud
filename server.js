@@ -29,7 +29,7 @@ app.get("*", (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Postfix Mailer server running on port ${PORT}`);
   console.log(`🌐 Local: http://localhost:${PORT}`);
   console.log(`📧 API Endpoint: http://localhost:${PORT}/api/send-email`);
@@ -42,9 +42,30 @@ app.listen(PORT, () => {
     console.log(`   Branch: ${process.env.PLATFORM_BRANCH || 'unknown'}`);
   } else if (process.env.FUNCTION_NAME) {
     console.log(`☁️  Running on Firebase Functions`);
+  } else if (process.env.K_SERVICE) {
+    console.log(`☁️  Running on Google Cloud Run`);
+    console.log(`   Service: ${process.env.K_SERVICE}`);
   } else {
     console.log(`💻 Running locally`);
   }
+});
+
+// Error handling
+server.on('error', (error) => {
+  console.error('❌ Server error:', error);
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use`);
+    process.exit(1);
+  }
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM received, closing server...');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
 });
 
 module.exports = app;

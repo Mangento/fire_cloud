@@ -1,0 +1,52 @@
+# .gcloudignore - Files to ignore when deploying to Google Cloud
+# This prevents deployment issues with Firebase
+
+# Node modules
+node_modules/
+functions/node_modules/
+
+# Git
+.git/
+.gitignore
+
+# GitHub
+.github/
+
+# Environment files
+.env
+.env.*
+
+# Documentation
+README*.md
+SETUP.md
+TESTING.md
+API-EXAMPLES.md
+GITHUB-DEPLOY.md
+UPSUN-DEPLOY.md
+QUICK-GITHUB.md
+GETTING-STARTED.md
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Upsun/Platform.sh
+.platform.app.yaml
+.platform/
+.environment
+
+# Development files
+server.js
+test-mailer.js
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

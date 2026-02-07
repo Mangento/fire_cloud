@@ -9,24 +9,28 @@
     "rewrites": [
       {
         "source": "/api/send-email",
-        "function": "sendEmail"
+        "function": {
+          "functionId": "sendEmail",
+          "region": "us-central1"
+        }
       },
       {
         "source": "/api/health",
-        "function": "healthCheck"
+        "function": {
+          "functionId": "healthCheck",
+          "region": "us-central1"
+        }
       }
     ]
   },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    }
-  ]
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs18",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ]
+  }
 }
